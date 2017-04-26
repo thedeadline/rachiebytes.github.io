@@ -1,0 +1,88 @@
+---
+layout: post
+title:  "Getting started with Homebrew"
+date:   2017-04-26 08:15:43 -0500
+categories: osx
+---
+
+
+### What is Homebrew?
+
+[Homebrew](https://brew.sh/) is a package managment system for macOS.
+
+### How does it work?
+
+Homebrew installs packages to /usr/local/Cellar then symlinks those files in /usr/local.
+During the uninstall process, Homebrew first unlinks the package in /usr/local then
+uninstalls the package from /usr/local/Cellar.
+
+### How to install Homebrew?
+
+```sh
+$ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+```
+
+### Basic commands
+
+To install a package:
+```sh
+$ brew install <formula>
+```
+* Formula is the name of a tool, such as wget.
+* Note that you can install multiple versions of a package but the symlink in /usr/local will point to the newest version by default.
+
+To uninstall a package:
+```sh
+$ brew uninstall <formula>
+```
+
+To link a package:
+```sh
+$ brew link <formula>
+```
+* This sets up a symlink to a package found in /usr/local/Cellar.
+
+To unlink a package:
+```sh
+$ brew unlink <formula>
+```
+* This removes the symlink to a package found in /usr/local/Cellar.
+
+### Example
+
+Follow along with the commands to try out Homebrew:
+
+```sh
+$ brew install gron
+```
+
+You should now have gron installed. Take a look at where it was installed to:
+```sh
+$ ls /usr/local/Cellar
+```
+Now go look the symlink (you should see gron point to /usr/local/Cellar/gron):
+```sh
+$ ls -l /usr/local/bin
+```
+
+We can now remove the package (this will unlink the package from /usr/local/bin and will remove the pacakge from /usr/local/Cellar):
+```sh
+$ brew uninstall gron
+```
+
+### Wondering why gron was installed to /usr/local/bin?
+Sometimes it's nice to a dive a little deeper into something to fully understand
+what's going on. This was the case for me regarding `/usr/local/bin` vs `/usr/bin` vs `/bin`.
+
+Here is what I discovered:
+
+* First of all I had no idea what `usr` meant. Turns out it means 'Unix System Resources.'
+* `/bin` - essential command-line binaries
+* `/usr` - contains non-essential command-line binaries, libraries, header files, and other data
+* `/usr/bin` - contains non-essential executables that are managed by the os
+* `/usr/local/bin` - contains non-essential exectuables that are not managed by the os. this is where Homebrew comes in and saves us all.
+
+If you want to know more about the file system structure:
+```sh
+$ man hier
+```

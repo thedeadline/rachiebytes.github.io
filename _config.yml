@@ -16,7 +16,9 @@
 title: rachiebytes
 email: racheljohnson457@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
-  A place for me to blog about what I'm learning.
+  If you have questions or find an error
+  in one of my blogs, please email me and
+  let me know!
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: rachiebytes
