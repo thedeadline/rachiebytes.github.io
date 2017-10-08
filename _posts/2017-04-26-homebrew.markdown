@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Getting started with Homebrew"
+title:  "Getting Started With Homebrew"
 date:   2017-04-26 08:15:43 -0500
 categories: osx
 ---
@@ -10,13 +10,13 @@ categories: osx
 
 [Homebrew](https://brew.sh/) is a package managment system for macOS.
 
-### How does it work?
+### How it works
 
 Homebrew installs packages to /usr/local/Cellar then symlinks those files in /usr/local.
 During the uninstall process, Homebrew first unlinks the package in /usr/local then
 uninstalls the package from /usr/local/Cellar.
 
-### How to install Homebrew?
+### How to install Homebrew
 
 ```sh
 $ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -60,7 +60,7 @@ You should now have gron installed. Take a look at where it was installed to:
 ```sh
 $ ls /usr/local/Cellar
 ```
-Now go look the symlink (you should see gron point to /usr/local/Cellar/gron):
+Now, go look at the symlink (you should see gron point to /usr/local/Cellar/gron):
 ```sh
 $ ls -l /usr/local/bin
 ```
@@ -71,16 +71,16 @@ $ brew uninstall gron
 ```
 
 ### Wondering why gron was installed to /usr/local/bin?
-Sometimes it's nice to a dive a little deeper into something to fully understand
+Sometimes it's nice to dive a little deeper into something to fully understand
 what's going on. This was the case for me regarding `/usr/local/bin` vs `/usr/bin` vs `/bin`.
 
 Here is what I discovered:
 
-* First of all I had no idea what `usr` meant. Turns out it means 'Unix System Resources.'
+* First of all, I had no idea what `usr` meant. Turns out it means 'Unix System Resources.'
 * `/bin` - essential command-line binaries
 * `/usr` - contains non-essential command-line binaries, libraries, header files, and other data
 * `/usr/bin` - contains non-essential executables that are managed by the os
-* `/usr/local/bin` - contains non-essential exectuables that are not managed by the os. this is where Homebrew comes in and saves us all.
+* `/usr/local/bin` - contains non-essential exectuables that are not managed by the os. This is where Homebrew comes in and saves us all.
 
 If you want to know more about the file system structure:
 ```sh
